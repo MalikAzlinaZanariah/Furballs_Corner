@@ -1,2 +1,3 @@
 # Furballs_Corner
-trial and error
+Style and MERN stack
+
