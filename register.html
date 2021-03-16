@@ -1,0 +1,137 @@
+<html>
+    <head>
+        <title>Progress Bar</title>
+        <style type="text/css">
+        body{
+            margin: 20px;
+            font-family: sans-serif;
+        }
+
+        .input-container{
+            margin-botton: 15px;
+            max-width: 300px;
+            margin: 20px;
+        }
+        .input-container[data-error] .input{
+            border-color: #c92432;
+            color: #c92432;
+            background: #fffafa;
+        }
+        .input-container[data-error]::after{
+            content: attr(data-error);
+            font-size: 0.85rem;
+            color:#c92432;
+            display: block;
+            margin: 10px 0;
+
+        }
+        .input{
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #fff;
+            border-radius: 4px;
+
+        }
+        .container{
+            width: 100%;
+        }
+        .progressbar{
+            counter-reset: step;
+            align-items: center;
+            margin: 0 auto 10px auto;
+        }
+        .progressbar li{
+            list-style-type: none;
+            float: left;
+            width: 33.33%;
+            position: relative;
+            text-align: center;
+        }
+        .progressbar li:before{
+            content: counter(step);
+            counter-increment: step;
+   
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #ddd;
+           display: block;
+           justify-content: center;
+            text-align: center;
+            margin: 0 auto 10px auto;
+            border-radius: 50%;
+            background-color: royalblue;
+            color: #fff;
+            
+        }
+
+        .progressbar li:after{
+            content: '';
+            position:absolute;
+            width: 100%;
+            height: 1px;
+            background-color: #ddd;
+            top: 15px;
+            left: -50%;
+            z-index: -1;
+        }
+        .progressbar li:first-child:after{
+            content: none;
+        }
+        .progressbar li.active{
+            color:royalblue;
+        }
+        .progressbar li.active::before{
+            border-color: royalblue;
+        }
+        .progressbar li.active + li:after{
+            background-color: royalblue;
+        }
+            </style>
+    </head>
+    <body>
+        <div class="container">
+            <ul class="progressbar">
+                <li class="active"> Payment</li>
+                <li> Shipping</li>
+                <li> Place an Order</li> 
+
+            </ul>
+        </div>
+
+    <div class="alert alert-primary" role="alert">
+        <div class="row">
+            <div class="col">
+                
+            </div>
+        </div>
+        <div class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>You are about to delete, please confirm</h2>
+                        <button type = "button" class="close"></button>
+                    </div>
+                    <div class="modal-footer">
+                        <button>undo</button>
+                        <button>Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="input-container">
+        <input type="text" class="input" placeholder="Username" >
+    </div>
+    <div class="input-container">
+        <input type="password" class="input" placeholder="Password">
+    </div>
+    <div class="input-container" data-error="Password does not match.">
+        <input type="password" class="input" placeholder="Confirm Password"value="hacker123">
+    </div>
+    </body>
+</html>
